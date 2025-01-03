@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Page</title>
+  <style>
+    /* General styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Navigation bar */
+    #navbar {
+      background-color: #333;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px 0;
+      z-index: 100;
+    }
+
+    #navbar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    #navbar li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+
+    #navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+    }
+
+    #navbar a:hover {
+      background-color: #ddd;
+      color: #333;
+      border-radius: 5px;
+    }
+
+    /* Quiz container */
+    .quiz-container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 60%;
+      margin-top: 70px; /* To avoid overlap with navbar */
+      text-align: center;
+    }
+
+    .quiz-container h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    #question {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    #options {
+      margin-bottom: 20px;
+    }
+
+    button.option {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    button.option:hover {
+      background-color: #0056b3;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Next button */
+    #next-question {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #next-question:hover {
+      background-color: #218838;
+    }
+
+    /* Result text */
+    #result {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav id="navbar">
+    <ul>
+      <li><a href="placement.html">Home</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+  </nav>
+
+  <!-- Quiz Container -->
+  <div class="quiz-container">
+    <h1>Take the Quiz</h1>
+    <div id="quiz-content">
+      <div id="question"></div>
+      <div id="options"></div>
+    </div>
+    <button id="next-question">Next</button>
+    <p id="result"></p>
+  </div>
+
+</head>
+<body>
+  
+
+  <script>
+    let questions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    async function fetchQuestions() {
+      try {
+        const response = await fetch('http://localhost:5000/questions');
+        questions = await response.json();
+        loadQuestion();
+      } catch (err) {
+        console.error('Error fetching questions:', err);
+      }
+    }
+
+    function loadQuestion() {
+      if (currentQuestionIndex >= questions.length) {
+        document.querySelector('.quiz-container').innerHTML = `<h2>Your score: ${score}/${questions.length}</h2>`;
+        return;
+      }
+
+      const currentQuestion = questions[currentQuestionIndex];
+      document.getElementById('question').textContent = currentQuestion.question;
+      const optionsContainer = document.getElementById('options');
+      optionsContainer.innerHTML = '';
+
+      currentQuestion.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.className = 'option';
+        button.addEventListener('click', () => checkAnswer(index));
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    function checkAnswer(selectedIndex) {
+      const currentQuestion = questions[currentQuestionIndex];
+      if (selectedIndex === currentQuestion.correct) {
+        score++;
+        document.getElementById('result').textContent = 'Correct!';
+      } else {
+        document.getElementById('result').textContent = 'Incorrect!';
+      }
+      document.querySelectorAll('.option').forEach(btn => btn.disabled = true);
+    }
+
+    document.getElementById('next-question').addEventListener('click', () => {
+      currentQuestionIndex++;
+      document.getElementById('result').textContent = '';
+      loadQuestion();
+    });
+
+    fetchQuestions();
+  </script>
+</body>
+</html>

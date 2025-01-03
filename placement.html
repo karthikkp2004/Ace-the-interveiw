@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Preparation Website</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap" rel="stylesheet">
+</head>
+<style>
+/* CSS Reset */
+*{
+    margin:0;
+    padding:0;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: white;
+}
+/* CSS Variables */
+:root{
+    --navbar-height:59px;
+}
+/* Navigation Bar */
+#navbar{
+    display: flex;
+    align-items:center;
+    top: 0px;
+    position: sticky;
+}
+#navbar::before{
+    content:"";
+    background-color:white;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 90%;
+    width: 100%;
+     z-index: -1;
+   opacity: 0.5;
+} 
+/*  Navigation bar: logo and image  */
+#logo{
+    margin:10px 14px;
+}
+
+#logo img {
+    margin:3px -15px;
+}
+/* Navigation Bar:List Styling */
+#navbar{
+    position:sticky;
+    background-color: rgb(161, 207, 236);
+}
+#navbar ul{
+    display:flex;
+    font-family: 'Merriweather', serif;
+}
+#navbar ul li{
+    list-style: none;
+    font: 1.3rem;
+}
+#navbar ul li a{
+    color:black;
+    display: block;
+    padding:3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+#navbar ul li a:hover{
+    color:blue;
+    background-color:rgb(161, 157, 157);
+    text-decoration: underline;
+}
+#navbar strong{
+    font-size:1.5rem;
+    font-family: 'Merriweather','serif';
+    padding-right:70px;
+}
+.right{
+        position: sticky;
+        right:-300px;
+        top: 45px;
+        display: inline-block;
+        color: black;
+    }
+    .btn{
+        margin: 0px 343px;
+        background-color: black;
+        color: white;
+        padding: 4px 14px;
+        border: 2px solid rgb(63, 55, 55);
+        border-radius: 80px;
+        font-size: 20px;
+        cursor: pointer;
+
+    }
+    .btn:hover{
+        background-color: rgb(96, 93, 93);
+    }
+/* grid */
+.container
+{
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+} 
+#home{
+    height:300px;
+    width: 626px;
+    background-color:white;
+    margin:3px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+   
+    /* padding: 50px; */
+}
+/* Home Section */
+#home{
+    display:flex;
+    flex-direction: column;
+    padding:3px 200px;
+    height: 443px;
+    justify-content: center;
+    align-items:center;
+    color: black;
+}
+#home::before{
+    content:"";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.9;
+}
+#home h1{
+    font-size: 3rem;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+}
+#home p{
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: 'Merriweather', serif;
+}
+#home{
+    padding:0px;
+}
+/* Client Section */
+#client-section{
+    position: relative;
+    z-index:-2;
+}
+#client-section::before{
+content:"";
+position:absolute;
+width: 100%;
+height: 100%;
+}
+#client-section .h-primary{
+    position: relative;
+    text-align: center;
+font-size: 2.3rem;
+font-family: 'Merriweather', serif;
+}
+
+#clients{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#client-item{
+    padding: 50px;
+}
+/* bbox */
+@keyframes aru{
+    from{
+        width:10px;
+    }
+    to{
+        width:100%;
+    }
+}
+#bbox{
+    background-color: black;
+    width: 10px;
+    height:5px;
+    position: relative;
+    animation-name:aru;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+#immg{
+    filter:invert(100%);
+}
+
+/* footer */
+footer{
+    background:white;
+    text-align: center;
+    color: black;
+}
+/* Service Center */
+#services{
+    margin:34px;
+    display: flex;
+
+}
+#services .box{
+    padding: 14px;
+    margin: 5px 25px;
+    box-sizing: 10px 10px;
+    border-radius: 28px;
+    font-family: 'Merriweather', serif;
+    color:grey;
+}
+#services .box1{
+    padding: 14px;
+    margin: 5px 25px;
+    box-sizing: 10px 10px;
+    border-radius: 28px;
+    font-family: 'Merriweather', serif;
+    color:grey;
+}
+#services .box2{
+    padding: 14px;
+    margin: 5px 25px;
+    box-sizing: 10px 10px;
+    border-radius: 28px;
+    font-family: 'Merriweather', serif;
+    color:grey;
+
+}
+</style>
+<body>
+        <nav id="navbar">
+            <div id="logo">
+                <img src="image/lotus.png" alt="sorry" height="100px" weight="100px">
+            </div>
+             <ul>
+                <li><strong>Placement Preparation</strong></li>
+                <li class="active"></li><a href="placement.html">Home</a>
+                <li class="item"><a href="aptitude.html">Aptitude</a></li>
+                <li class="item"><a href="dsa.html">DSA Sheet</a></li>
+                <li class="item"><a href="subject.html">Subject</a></li>
+                <li class="item"><a href="alumni.html">Alumni</a></li>
+                <li class="item"><a href="others.html">Meet our Team</a></li>
+                <li class="item"><a href="index.html"> logout</a></li>
+            </ul>
+
+ 
+
+            <div class="right">
+                <a href="feedback.html" class="btn">Feedback</a>
+              </div>
+        </nav>
+        <div class="container">
+        <section id="home">
+            <h1 class="h-primary">Welcome to Our Placement Preparation  Website</h1>
+            <p>Want to place in a good company?<br>
+                Learn Data Structure and Algorithum,Computer Networking,Oops,Aptitude by practing all patterns of questions.</p>
+        </section>
+        <section id="home">
+           <img src="image/teacher.png" alt="no" height="400px" width="400px">
+        </section>
+        </div>
+        <section id="client-section">
+            <h1 class="h-primary center">Campanies Visited</h1>
+            <marquee direction="right" scrollamount="20">
+            <div id="clients">
+            <div id="clients-item">
+                <img src="image/icons.png" alt="Our clients" heignt="100px" width="100px">
+            </div>
+            <div id="clients-item">
+                <img src="image/apple.png" alt="Our clients" heignt="130px" width="130px">
+            </div>
+            <div id="clients-item">
+                <img src="image/google.png" alt="Our clients" heignt="200px" width="200px">
+            </div>
+            <div id="clients-item">
+                <img src="image/ericsson.png" alt="Our clients" heignt="200px" width="200px">
+            </div>
+            <div id="clients-item">
+                <img src="image/m.png" alt="Our clients" heignt="200px" width="200px">
+            </div>
+            <div id="clients-item">
+                <img src="image/tat.png" alt="Our clients" heignt="200px" width="200px">
+            </div>
+            <div id="clients-item">
+                <img src="image/wiproo.png" alt="Our clients" heignt="200px" width="200px">
+            </div>
+            <div id="clients-item">
+                <div id="immg">
+                <img src="image/amazon.png" alt="Our clients" heignt="200px" width="200px">
+                </div>
+            </div>
+        </div>
+    </marquee>
+        </section>
+        <div id="bbox"></div>
+        <br>
+        <footer>
+            <section id="services-container">
+                <div id="services">
+                    <div class="box">
+                        <h2 class="h-secondary center">About Us</h2>
+                        <p class="center">We are team of 8 Members Prepared a website for placement preparation in order ease the study of concepts</p>
+                    </div>
+                    <div class="box1">
+                        <h2 class="h-secondary center">Free Resources</h2>
+                        <br>
+                        <ul>
+                            <li><a href="subject.html">Subject</a></li>
+                            <br>
+                            <li><a href="dsa.html">DSA Sheet</a></li>
+                            <br>
+                            <li><a href="aptitude.html">Aptitude</a></li>
+                    </ul>
+                    </div>
+                    <div class="box2">
+                        <h2 class="h-secondary center">Subject</h2>
+                        <br>
+                        <ul>
+                        <li>C Language</li>
+                        <br>
+                        <li>Oops</li>
+                        <br>
+                        <li>DSA</li>
+                        <br>
+                        <li>Computer Networking</li>
+                        <br>
+                        <li>DBMS</li>
+                        </ul>
+                    </div>
+                    <div class="box2">
+                        <h2 class="h-secondary center">Contact Us</h2>
+                        <p>kkarthikkp43@gmail.com</p>
+                        <p>adavayyacharantimath013@gmail.com</p>
+                        <p>riyak2205@gmail.com</p>
+                        <p>shrishailgolappanavar11@gmail.com</p>
+                        <p>abhayhosakoti@gmail.com</p>
+                        <p>shwethakalyani715@gmail.com</p>
+                        <p>kkarthikkp43@gmail.com</p>
+                        <p>rakshitballa87@gmail.com</p>
+
+                        <br>
+                        
+                    </div>
+                </div>
+        </section>
+        </footer>
+
+
+
+
+        <script type="module" src="myscript.js"></script>
+        <script src="app.js"></script>
+</body>
+</html>

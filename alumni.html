@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Directory</title>
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #2563eb;
+      --bg-light: #f8f9fa;
+      --bg-dark: #1a1a1a;
+      --text-light: #666;
+      --text-dark: #1a1a1a;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(to bottom right, var(--bg-light), #e9ecef);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    body.dark-mode {
+      --bg-light: #1a1a1a;
+      --bg-dark: #f8f9fa;
+      --text-light: #e0e0e0;
+      --text-dark: #ffffff;
+      background: linear-gradient(to bottom right, #1a1a1a, #2d2d2d);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header styles */
+    .header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+    }
+
+    .header-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .header h1 {
+      color: var(--text-dark);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .header p {
+      color: var(--text-light);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Search styles */
+    .search-container {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-box {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .filters {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-button.active {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    /* Alumni card styles */
+    .alumni-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    .alumni-card {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .alumni-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-header {
+      position: relative;
+    }
+
+    .card-header img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .social-links {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .social-links a {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      color: #0077b5;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .alumni-card-content {
+      padding: 1.5rem;
+    }
+
+    .alumni-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-light);
+    }
+
+    .achievements {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .achievements h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .achievements ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .achievements li {
+      margin-bottom: 0.25rem;
+    }
+    #logo{
+    margin:10px 14px;
+}
+
+#logo img {
+    margin:3px -15px;
+}
+/* Navigation Bar:List Styling */
+#navbar{
+    position: sticky;
+    background-color: rgb(161, 207, 236);
+}
+#navbar ul{
+    display:flex;
+    font-family: 'Merriweather', serif;
+}
+#navbar ul li{
+    list-style: none;
+    font: 1.3rem;
+}
+#navbar ul li a{
+    color:black;
+    display: block;
+    padding:3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+#navbar ul li a:hover{
+    color:blue;
+    background-color:rgb(216, 214, 214);
+    text-decoration: underline;
+}
+#navbar strong{
+    font-size:1.5rem;
+    font-family: 'Merriweather','serif';
+    padding-right:70px;
+}
+.right{
+        position: absolute;
+        right:-300px;
+        top: 45px;
+        display: inline-block;
+        color: black;
+    }
+    .btn{
+        margin: 0px 343px;
+        background-color: black;
+        color: white;
+        padding: 4px 14px;
+        border: 2px solid rgb(63, 55, 55);
+        border-radius: 80px;
+        font-size: 20px;
+        cursor: pointer;
+
+    }
+
+    @media (max-width: 768px) {
+      .alumni-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div id="logo">
+            <img src="image/lotus.png" alt="sorry" height="100px" weight="100px">
+        </div>
+        <ul>
+            <li><strong>Placement Preparation</strong></li>
+            <li class="item"><a href="placement.html">Home</a></li>
+            <li class="active"></li><a href="aptitude.html">Aptitude</a>
+            <li class="item"><a href="dsa.html">DSA Sheet</a></li>
+            <li class="item"><a href="subject.html">Subject</a></li>
+            <li class="item"><a href="others.html">Others</a></li>
+        </ul>
+         <!-- right box for button -->
+   <div class="right">
+    <button class="btn">Feedback</button>
+    </div>
+    </nav>
+    
+  <div class="container">
+    <header class="header">
+      <div class="theme-toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <label for="darkModeToggle">🌙</label>
+      </div>
+      
+      <div class="header-icon">🎓</div>
+      <h1>Our Distinguished Alumni</h1>
+      <p>Meet our successful graduates who are making their mark in leading tech companies around the world.</p>
+    </header>
+
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by name or company...">
+      </div>
+      <div class="filters">
+        <button class="filter-button" data-company="google">Google</button>
+        <button class="filter-button" data-company="microsoft">Microsoft</button>
+        <button class="filter-button" data-company="apple">Apple</button>
+        <button class="filter-button" data-company="amazon">Amazon</button>
+        <button class="filter-button" data-company="meta">Meta</button>
+        <button class="filter-button" data-company="netflix">Netflix</button>
+      </div>
+    </div>
+    
+    <div class="alumni-grid" id="alumniGrid"></div>
+  </div>
+
+  <script>
+    // Alumni data
+    const alumniData = [
+      {
+        id: 1,
+        name: "Neha",
+        company: "Google",
+        email: "neha.j@google.com",
+        imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=500",
+        achievements: [
+          "Lead Developer, Google Maps",
+          "Published 3 Research Papers"
+        ]
+      },
+      {
+        id: 2,
+        name: "Rochan",
+        company: "Microsoft",
+        email: "m.rochan@microsoft.com",
+        imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=500",
+        achievements: [
+          "Senior Cloud Architect",
+          "Microsoft MVP 2023"
+        ]
+      },
+      {
+        id: 3,
+        name: "Sneha",
+        company: "Apple",
+        email: "e.sneha@apple.com",
+        imageUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=500",
+        achievements: [
+          "iOS Platform Lead",
+          "10+ Patents Filed"
+        ]
+      },
+      {
+        id: 4,
+        name: "Darshan",
+        company: "Amazon",
+        email: "d.darshan@amazon.com",
+        imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=500",
+        achievements: [
+          "Principal Engineer, AWS",
+          "Tech Lead for EC2"
+        ]
+      },
+      {
+        id: 5,
+        name: "Lisa Patel",
+        company: "Meta",
+        email: "l.patel@meta.com",
+        imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=500",
+        achievements: [
+          "VR/AR Research Lead",
+          "Meta Reality Labs Pioneer"
+        ]
+      },
+      {
+        id: 6,
+        name: "James Walker",
+        company: "Netflix",
+        email: "j.walker@netflix.com",
+        imageUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=500",
+        achievements: [
+          "Streaming Architecture Lead",
+          "Netflix Performance Team"
+        ]
+      }
+    ];
+
+    // Create alumni card
+    function createAlumniCard(alumni) {
+      return `
+        <div class="alumni-card">
+          <div class="card-header">
+            <img src="${alumni.imageUrl}" alt="${alumni.name}">
+            <div class="social-links">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">in</a>
+            </div>
+          </div>
+          <div class="alumni-card-content">
+            <h2>${alumni.name}</h2>
+            <div class="alumni-info">
+              <span>🏢</span>
+              <span class="company">${alumni.company}</span>
+            </div>
+            <div class="alumni-info">
+              <span>✉️</span>
+              <a href="mailto:${alumni.email}">${alumni.email}</a>
+            </div>
+            <div class="achievements">
+              <h3>Achievements</h3>
+              <ul>
+                ${alumni.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Dark mode functionality
+    function initDarkMode() {
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+      
+      const darkMode = localStorage.getItem('darkMode') === 'true';
+      if (darkMode) {
+        body.classList.add('dark-mode');
+        darkModeToggle.checked = true;
+      }
+      
+      darkModeToggle.addEventListener('change', () => {
+        body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+      });
+    }
+
+    // Search and filter functionality
+    function initSearch() {
+      const searchInput = document.getElementById('searchInput');
+      const alumniCards = document.querySelectorAll('.alumni-card');
+      const filterButtons = document.querySelectorAll('.filter-button');
+      
+      searchInput.addEventListener('input', filterAlumni);
+      filterButtons.forEach(button => {
+        button.addEventListener('click', toggleFilter);
+      });
+      
+      function filterAlumni() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const activeFilters = Array.from(filterButtons)
+          .filter(btn => btn.classList.contains('active'))
+          .map(btn => btn.dataset.company);
+        
+        alumniCards.forEach(card => {
+          const name = card.querySelector('h2').textContent.toLowerCase();
+          const company = card.querySelector('.company').textContent.toLowerCase();
+          
+          const matchesSearch = name.includes(searchTerm) || company.includes(searchTerm);
+          const matchesFilter = activeFilters.length === 0 || activeFilters.includes(company);
+          
+          card.style.display = matchesSearch && matchesFilter ? 'block' : 'none';
+        });
+      }
+      
+      function toggleFilter() {
+        this.classList.toggle('active');
+        filterAlumni();
+      }
+    }
+
+    // Initialize application
+    document.addEventListener('DOMContentLoaded', () => {
+      const alumniGrid = document.getElementById('alumniGrid');
+      alumniGrid.innerHTML = alumniData.map(alumni => createAlumniCard(alumni)).join('');
+      
+      initDarkMode();
+      initSearch();
+    });
+  </script>
+</body>
+</html>

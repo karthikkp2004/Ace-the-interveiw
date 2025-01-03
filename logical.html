@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Preparation Website</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap" rel="stylesheet">
+</head>
+<style>
+/* CSS Reset */
+*{
+    margin:0;
+    padding:0;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: white;
+}
+/* CSS Variables */
+:root{
+    --navbar-height:59px;
+}
+/* Navigation Bar */
+#navbar{
+    display: flex;
+    align-items:center;
+    top: 0px;
+    position: sticky;
+}
+#navbar::before{
+    content:"";
+    background-color:white;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 90%;
+    width: 100%;
+     z-index: -1;
+   opacity: 0.5;
+} 
+/*  Navigation bar: logo and image  */
+#logo{
+    margin:10px 14px;
+}
+
+#logo img {
+    margin:3px -15px;
+}
+/* Navigation Bar:List Styling */
+#navbar{
+    position:sticky;
+    background-color: rgb(161, 207, 236);
+}
+#navbar ul{
+    display:flex;
+    font-family: 'Merriweather', serif;
+}
+#navbar ul li{
+    list-style: none;
+    font: 1.3rem;
+}
+#navbar ul li a{
+    color:black;
+    display: block;
+    padding:3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+#navbar ul li a:hover{
+    color:blue;
+    background-color:rgb(161, 157, 157);
+    text-decoration: underline;
+}
+#navbar strong{
+    font-size:1.5rem;
+    font-family: 'Merriweather','serif';
+    padding-right:70px;
+}
+.right{
+        position: sticky;
+        right:-300px;
+        top: 45px;
+        display: inline-block;
+        color: black;
+    }
+    .btn{
+        margin: 0px 105px;
+        background-color: black;
+        color: white;
+        padding: 4px 14px;
+        border: 2px solid rgb(63, 55, 55);
+        border-radius: 80px;
+        font-size: 20px;
+        cursor: pointer;
+
+    }
+    .btn:hover{
+        background-color: rgb(96, 93, 93);
+    }
+    .item1 h1{ 
+    background-color: black;
+    color:white;
+    position:static;
+    margin-top:50px;
+    height: 100px;
+    width: 100%;
+    font-size: 3rem;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Merriweather', serif;
+    padding-top: 15px;
+}
+.item1 p{
+    position: static;
+    padding:20px;
+    height: 50px;
+    width: 100%;
+    font-size: 1.3rem;
+    font-family: 'Merriweather', serif;
+    }
+    /* Button */
+    .butt{
+        margin: 10px 0px;
+        background-color: rgb(42, 38, 38);
+        color: white;
+        padding: 10px 200px;
+        border: 2px solid rgb(63, 55, 55);
+        border-radius: 50px;
+        font-size: 20px;
+        cursor: pointer;
+        align-items: center;
+        font-family: 'Merriweather', serif;
+        height:10%;
+        width:100%;
+    }
+    .butt:hover{
+        background-color: rgb(96, 93, 93);
+    }
+    /* table */
+    table,td{
+        border: 1px solid black;
+        font-size: 1.2rem;
+        font-family: 'Merriweather', serif;
+        border-spacing:0 5px;
+    }
+    #table_con td:hover,#table_con1 td:hover,#table_con2 td:hover,#table_con3 td:hover,#table_con4 td:hover,#table_con5 td:hover,#table_con6 td:hover{
+    color:blue;
+    text-decoration: underline;
+    }
+    #table_con td,#table_con1 td,#table_con2 td,#table_con3 td,#table_con4 td,#table_con5 td,#table_con6 td{
+     background-color: white;
+     color: black;
+     text-align: center;
+     cursor: pointer;
+    }
+    /* bbox */
+@keyframes aru{
+    from{
+        width:10px;
+    }
+    to{
+        width:100%;
+    }
+}
+#bbox{
+    background-color: black;
+    width: 10px;
+    height:5px;
+    position: relative;
+    animation-name:aru;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+    /* footer */
+footer{
+    background:white;
+    text-align: center;
+    color: black;
+}
+/* Service Center */
+#services{
+    margin:34px;
+    display: flex;
+
+}
+#services .box{
+    padding: 14px;
+    margin: 5px 25px;
+    box-sizing: 10px 10px;
+    border-radius: 28px;
+    font-family: 'Merriweather', serif;
+    color:grey;
+}
+#services .box1{
+    padding: 14px;
+    margin: 5px 25px;
+    box-sizing: 10px 10px;
+    border-radius: 28px;
+    font-family: 'Merriweather', serif;
+    color:grey;
+}
+#services .box2{
+    padding: 14px;
+    margin: 5px 25px;
+    box-sizing: 10px 10px;
+    border-radius: 28px;
+    font-family: 'Merriweather', serif;
+    color:grey;
+
+}
+</style>
+<body>
+        <nav id="navbar">
+            <div id="logo">
+                <img src="image/lotus.png" alt="sorry" height="100px" weight="100px">
+            </div>
+             <ul>
+                <li><strong>Placement Preparation</strong></li>
+                <li class="item"><a href="placement.html">Home</a></li>
+                <li class="active"></li><a href="aptitude.html">Aptitude</a>
+                <li class="item"><a href="dsa.html">DSA Sheet</a></li>
+                <li class="item"><a href="subject.html">Subject</a></li>
+                <li class="item"><a href="others.html">Others</a></li>
+            </ul>
+             <!-- right box for button -->
+       <div class="right">
+        <button class="btn">Feedback</button>
+        </div>
+        </nav>
+        <div class="container">
+            <div class="item1">
+                <h1>LOGICAL REASONING</h1>
+             </div>
+             <div class="item1">  
+                <p>Below on this page you will find the easiest quickest ways to solve a question, formulas, shortcuts and tips and tricks to solve various Logical Reasoning Questions in Placements.</p>
+                <div class="box_button">
+                <button class="butt" onclick="toggleHide()">
+                  Series
+                </button>
+                <div id="table_con">
+                    <table style="width:100%">
+                    <tr>
+                       
+                        <button class="butt">
+                            <a href="numberseries.html">LEARN Number-series</a>
+                          </button><br>
+                    </tr>
+                    <tr>
+                        <td>Coding and Number Series</td>
+                    </tr>
+                    <tr>
+                        <td>Letter and Symbol Series </td>
+                    </tr>
+                    <tr>
+                        <td>Logical Sequence of Words</td>
+                    </tr>
+                    <tr>
+                        <td>Analogy and Classification Pattern </td>
+                    </tr>
+                    </table>
+                    </div>
+                    <script>
+                     function toggleHide()
+                     {  
+                        let butt=document.getElementById('butt');
+                        let table_con=document.getElementById('table_con');
+                        if (table_con.style.display === "none") {
+                           table_con.style.display = "block";
+                           } else {
+                            table_con.style.display = "none";
+                           }
+                     }
+                    </script>
+                <br>
+                <button class="butt" onclick="toggleHide1()">
+                Statements
+                  </button>
+                  <div id="table_con1">
+                    <table style="width:100%">
+                        <tr>
+                            <td>Statements and Conclusions</td>
+                        </tr>
+                        <tr>
+                            <td>Statements and Assumptions </td>
+                        </tr>
+                        <tr>
+                            <td>Data Sufficiency  </td>
+                        </tr>
+                    </table>
+                    </div>
+                    <script>
+                     function toggleHide1()
+                     {  
+                        let butt=document.getElementById('butt');
+                        let table_con1=document.getElementById('table_con1');
+                        if (table_con1.style.display === "none") {
+                           table_con1.style.display = "block";
+                           } else {
+                            table_con1.style.display = "none";
+                           }
+                     }
+                    </script>
+                  <br>
+                  <button class="butt" onclick="toggleHide2()">
+                    Visual Reasoning
+                  </button>
+                  <div id="table_con2">
+                    <table style="width:100%">
+                        <tr>
+                            <td>Visual Reasoning</td>
+                        </tr>
+                        <tr>
+                            <td>Cube and Cuboid</td>
+                        </tr>
+                        <tr>
+                            <td>Cube</td>
+                        </tr>
+                        <tr>
+                            <td>Dice</td>
+                        </tr>
+                    </table>
+                    </div>
+                    <script>
+                     function toggleHide2()
+                     {  
+                        let butt=document.getElementById('butt');
+                        let table_con2=document.getElementById('table_con2');
+                        if (table_con2.style.display === "none") {
+                           table_con2.style.display = "block";
+                           } else {
+                            table_con2.style.display = "none";
+                           }
+                     }
+                    </script>
+                  <br>
+                  <button class="butt" onclick="toggleHide3()">
+                    Classic Reasoning
+                  </button>
+                  <div id="table_con3">
+                    <table style="width:100%">
+                        <tr>
+                            <td>Directional Senses</td>
+                        </tr>
+                        <tr>
+                            <td>Blood Relations</td>
+                        </tr>
+                        <tr>
+                            <td>Odd Man Out </td>
+                        </tr>
+                        <tr>
+                            <td>Syllogism</td>
+                        </tr>
+                    </table>
+                    </div>
+                    <script>
+                     function toggleHide3()
+                     {  
+                        let butt=document.getElementById('butt');
+                        let table_con3=document.getElementById('table_con3');
+                        if (table_con3.style.display === "none") {
+                           table_con3.style.display = "block";
+                           } else {
+                            table_con3.style.display = "none";
+                           }
+                     }
+                    </script>
+                    <br>
+                    <button class="butt" onclick="toggleHide4()">
+                      Arrangements
+                    </button>
+                    <div id="table_con4">
+                      <table style="width:100%">
+                          <tr>
+                              <td>Arrangements</td>
+                          </tr>
+                          <tr>
+                              <td>Setting Arrangements</td>
+                          </tr>
+                      </table>
+                      </div>
+                      <script>
+                       function toggleHide4()
+                       {  
+                          let butt=document.getElementById('butt');
+                          let table_con4=document.getElementById('table_con4');
+                          if (table_con4.style.display === "none") {
+                             table_con4.style.display = "block";
+                             } else {
+                              table_con4.style.display = "none";
+                             }
+                       }
+                      </script>
+                      <br>
+                      <button class="butt" onclick="toggleHide5()">
+                        Misc (But Important)
+                      </button>
+                      <div id="table_con5">
+                        <table style="width:100%">
+                            <tr>
+                                <td>Coding Deductive Logic</td>
+                            </tr>
+                            <tr>
+                                <td>Objective Reasoning</td>
+                            </tr>
+                            <tr>
+                                <td>Selection Decision Tables </td>
+                            </tr>
+                            <tr>
+                                <td>Attention to Details</td>
+                            </tr>
+                            <tr>
+                                <td>Inferred Meaning</td>
+                            </tr>
+                        </table>
+                        </div>
+                        <script>
+                         function toggleHide5()
+                         {  
+                            let butt=document.getElementById('butt');
+                            let table_con5=document.getElementById('table_con5');
+                            if (table_con5.style.display === "none") {
+                               table_con5.style.display = "block";
+                               } else {
+                                table_con5.style.display = "none";
+                               }
+                         }
+                        </script>
+                        <br>
+                        <button class="butt" onclick="toggleHide6()">
+                            Cryptarithmetic
+                        </button>
+                        <div id="table_con6">
+                          <table style="width:100%">
+                              <tr>
+                                  <td>Cryptarithmetic</td>
+                              </tr>
+                          </table>
+                          </div>
+                          <script>
+                           function toggleHide6()
+                           {  
+                              let butt=document.getElementById('butt');
+                              let table_con6=document.getElementById('table_con6');
+                              if (table_con6.style.display === "none") {
+                                 table_con6.style.display = "block";
+                                 } else {
+                                  table_con6.style.display = "none";
+                                 }
+                           }
+                          </script>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div id="bbox"></div>
+        <br>
+        <footer>
+            <section id="services-container">
+                <div id="services">
+                    <div class="box">
+                        <h2 class="h-secondary center">About Us</h2>
+                        <p class="center">We are team of 8 Members Prepared a website for placement preparation in order ease the study of concepts.</p>
+                    </div>
+                    <div class="box1">
+                        <h2 class="h-secondary center">Free Resources</h2>
+                        <br>
+                        <ul>
+                            <li><a href="subject.html">Subject</a></li>
+                            <br>
+                            <li><a href="dsa.html">DSA Sheet</a></li>
+                            <br>
+                            <li><a href="aptitude.html">Aptitude</a></li>
+                    </ul>
+                    </div>
+                    <div class="box2">
+                        <h2 class="h-secondary center">Subject</h2>
+                        <br>
+                        <ul>
+                        <li>C Language</li>
+                        <br>
+                        <li>Oops</li>
+                        <br>
+                        <li>DSA</li>
+                        <br>
+                        <li>Computer Networking</li>
+                        <br>
+                        <li>DBMS</li>
+                        </ul>
+                    </div>
+                    <div class="box2">
+                        <h2 class="h-secondary center">Contact Us</h2>
+                        <p>kkarthikkp43@gmail.com</p>
+                        <p>adavayyacharantimath013@gmail.com</p>
+                        <p>riyak2205@gmail.com</p>
+                        <p>shrishailgolappanavar11@gmail.com</p>
+                        <p>abhayhosakoti@gmail.com</p>
+                        <p>shwethakalyani715@gmail.com</p>
+                        <p>kkarthikkp43@gmail.com</p>
+                        <p>rakshitballa87@gmail.com</p>
+                    </div>
+                </div>
+        </section>
+        </footer>
+</body>
+</html>

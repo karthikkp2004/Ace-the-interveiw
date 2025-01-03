@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synonyms and Antonyms</title>
+  
+</head>
+<style>
+        body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    section {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+
+    section h2 {
+      border-bottom: 2px solid #4CAF50;
+      color: #333;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+    }
+
+    form ol {
+      list-style-type: decimal;
+      padding-left: 1rem;
+    }
+
+    form li {
+      margin-bottom: 1rem;
+    }
+
+    .options label {
+      display: block;
+      margin-bottom: 0.3em;
+    }
+
+    button {
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    p {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      background: #007bff;
+      color: white;
+      padding: 1em 0;
+    }
+
+    h1, h2 {
+      margin: 0.5em 0;
+    }
+
+    main {
+      width: 90%;
+      margin: auto;
+      padding: 1em;
+    }
+
+    section {
+      margin-bottom: 2em;
+      padding: 1em;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 0.5em;
+    }
+
+    ol {
+      padding-left: 1.5em;
+    }
+
+    li {
+      margin-bottom: 1em;
+    }
+
+    .options {
+      margin-top: 0.5em;
+    }
+
+    .options label {
+      display: block;
+      margin-bottom: 0.3em;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 1em;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    p {
+      margin-top: 1em;
+      font-weight: bold;
+    }
+</style>
+<body>
+  <header>
+    <h1>Synonyms and Antonyms</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Synonyms</h2>
+      <div id="synonyms">
+        <form>
+          <ol>
+            <li>Choose the synonym for "Happy":
+              <div class="options">
+                <label><input type="radio" name="syn1" value="1"> Sad</label>
+                <label><input type="radio" name="syn1" value="2"> Joyful</label>
+                <label><input type="radio" name="syn1" value="3"> Angry</label>
+                <label><input type="radio" name="syn1" value="4"> Afraid</label>
+              </div>
+            </li>
+            <li>Choose the synonym for "Bright":
+              <div class="options">
+                <label><input type="radio" name="syn2" value="1"> Dull</label>
+                <label><input type="radio" name="syn2" value="2"> Smart</label>
+                <label><input type="radio" name="syn2" value="3"> Luminous</label>
+                <label><input type="radio" name="syn2" value="4"> Dim</label>
+              </div>
+            </li>
+            <li>Choose the synonym for "Quick":
+              <div class="options">
+                <label><input type="radio" name="syn3" value="1"> Slow</label>
+                <label><input type="radio" name="syn3" value="2"> Fast</label>
+                <label><input type="radio" name="syn3" value="3"> Lazy</label>
+                <label><input type="radio" name="syn3" value="4"> Steady</label>
+              </div>
+            </li>
+          </ol>
+          <button type="button" onclick="calculateScore('synonyms')">Submit</button>
+          <p id="score-synonyms"></p>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h2>Antonyms</h2>
+      <div id="antonyms">
+        <form>
+          <ol>
+            <li>Choose the antonym for "Cold":
+              <div class="options">
+                <label><input type="radio" name="ant1" value="1"> Freezing</label>
+                <label><input type="radio" name="ant1" value="2"> Warm</label>
+                <label><input type="radio" name="ant1" value="3"> Hot</label>
+                <label><input type="radio" name="ant1" value="4"> Cool</label>
+              </div>
+            </li>
+            <li>Choose the antonym for "Big":
+              <div class="options">
+                <label><input type="radio" name="ant2" value="1"> Large</label>
+                <label><input type="radio" name="ant2" value="2"> Small</label>
+                <label><input type="radio" name="ant2" value="3"> Huge</label>
+                <label><input type="radio" name="ant2" value="4"> Enormous</label>
+              </div>
+            </li>
+            <li>Choose the antonym for "Easy":
+              <div class="options">
+                <label><input type="radio" name="ant3" value="1"> Simple</label>
+                <label><input type="radio" name="ant3" value="2"> Difficult</label>
+                <label><input type="radio" name="ant3" value="3"> Smooth</label>
+                <label><input type="radio" name="ant3" value="4"> Clear</label>
+              </div>
+            </li>
+          </ol>
+          <button type="button" onclick="calculateScore('antonyms')">Submit</button>
+          <p id="score-antonyms"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function calculateScore(topic) {
+      const section = document.getElementById(topic);
+      const answers = section.querySelectorAll('input[type="radio"]:checked');
+      let score = 0;
+
+      const correctAnswers = topic === "synonyms" ? [2, 3, 2] : [2, 2, 2]; // Correct answers for synonyms and antonyms
+      answers.forEach((answer, index) => {
+        if (parseInt(answer.value) === correctAnswers[index]) {
+          score++;
+        }
+      });
+
+      const result = section.querySelector(`#score-${topic}`);
+      result.textContent = `Score: ${score}/${correctAnswers.length}`;
+    }
+  </script>
+</body>
+</html>
